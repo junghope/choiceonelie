@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이 중 하나는 거짓말!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+            display: none;
+        }
+        
+        .slide.active {
+            display: flex;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #FFD700;
+        }
+        
+        h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #87CEEB;
+        }
+        
+        p, li {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            max-width: 800px;
+        }
+        
+        ul {
+            text-align: left;
+            margin: 1rem 0;
+        }
+        
+        li {
+            margin-bottom: 0.8rem;
+            padding-left: 1rem;
+        }
+        
+        .game-rules {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            margin: 1rem 0;
+        }
+        
+        .example-box {
+            background: rgba(255,255,255,0.15);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 5px solid #FFD700;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        
+        button {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .slide-number {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            font-size: 1.2rem;
+            background: rgba(0,0,0,0.3);
+            padding: 10px 15px;
+            border-radius: 20px;
+        }
+        
+        .emoji {
+            font-size: 3rem;
+            margin: 1rem 0;
+        }
+        
+        .highlight {
+            color: #FFD700;
+            font-weight: bold;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide.active > * {
+            animation: fadeIn 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-number">
+        <span id="current-slide">1</span> / <span id="total-slides">6</span>
+    </div>
+
+    <!-- 슬라이드 1: 제목 -->
+    <div class="slide active">
+        <div class="emoji">🎭</div>
+        <h1>이 중 하나는 거짓말!</h1>
+        <p>숨기려는 자와 찾으려는 자의 숨막힌 대결✌️</p>
+    </div>
+
+    <!-- 슬라이드 2: 기본 개념 -->
+    <div class="slide">
+        <h2>🎯 게임 방법</h2>
+        <div class="game-rules">
+            <p style="font-size: 2rem; color: #FFD700; font-weight: bold;">5개의 진술 중 4개는 사실, 1개는 거짓말</p>
+        </div>
+    </div>
+
+    <!-- 슬라이드 3: 게임 규칙 -->
+    <div class="slide">
+        <h2>📋 게임 규칙</h2>
+        <div class="game-rules">
+            <ul>
+                <li><strong>1단계:</strong> 한 사람이 자신에 대한 5가지 진술을 준비</li>
+                <li><strong>2단계:</strong> 4개는 사실, 1개는 거짓말로 구성</li>
+                <li><strong>3단계:</strong> 5가지 진술을 모두 발표</li>
+                <li><strong>4단계:</strong> 토론하며 거짓말 찾기</li>
+                <li><strong>5단계:</strong> 정답 공개 및 설명</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 슬라이드 4: 상품 안내 -->
+    <div class="slide">
+        <h2>🏆 상품이 기다리고 있어요!</h2>
+        <div class="game-rules">
+            <div class="emoji">🎁</div>
+            <h3>🕵️‍♀️ 명탐정상</h3>
+            <p>거짓말을 가장 많이 찾아낸 당신!</p>
+            <p>추리력 최고! 👏</p>
+            <br>
+            <h3>🎭 최고 연기상</h3>
+            <p>거짓말을 가장 그럴듯하게 한 당신!</p>
+            <p>다들 속았다! 😄</p>
+            <br>
+            <p style="color: #FFD700; font-size: 1.5rem;">무엇이 기다리고 있을까요? 👀</p>
+        </div>
+    </div>
+
+    <!-- 슬라이드 5: 진술 작성 팁 -->
+    <div class="slide">
+        <h2>💡 효과적인 진술 작성 팁</h2>
+        <div class="game-rules">
+            <h3>거짓말 진술 만들기:</h3>
+            <ul>
+                <li>완전히 말도 안 되는 것보다는 <span class="highlight">그럴듯한 거짓말</span></li>
+                <li>자신의 실제 경험과 <span class="highlight">약간만 다르게</span> 변형</li>
+                <li>너무 극단적이지 않은 <span class="highlight">적절한 수준</span>의 거짓말</li>
+            </ul>
+            <br>
+            <h3>진실 진술 배치하기:</h3>
+            <ul>
+                <li>놀라운 사실과 평범한 사실을 <span class="highlight">적절히 섞기</span></li>
+                <li>거짓말과 <span class="highlight">비슷한 톤</span>으로 맞추기</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 슬라이드 6: 예시 -->
+    <div class="slide">
+        <h2>🎭 게임 예시</h2>
+        <div class="example-box">
+            <h3>정호의 5가지 진술:</h3>
+            <ul>
+                <li>① 나는 어릴 때 피아노를 7년 동안 배웠다</li>
+                <li>② 대학교 때 배낭여행으로 유럽 8개국을 다녀왔다</li>
+                <li>③ 작년에 마라톤 풀코스를 완주했다</li>
+                <li>④ 나는 매운 음식을 전혀 먹지 못한다</li>
+                <li>⑤ 고등학교 때 학생회장을 했었다</li>
+            </ul>
+            <br>
+            <p><span class="highlight">어떤 것이 거짓말일까요? 🤔</span></p>
+        </div>
+    </div>
+
+    <!-- 슬라이드 7: 마무리 -->
+    <div class="slide">
+        <div class="emoji">🎊</div>
+        <h2>'💎상품의 주인공은?</h2>
+        <div class="game-rules">
+            <p>최고의 명탐정과 최고의 연기자를 찾아보자!</p>
+            <br>
+            <p><span class="highlight">"이 중 하나는 거짓말!"</span></p>
+            <br>
+            <p style="font-size: 1.1rem;">모두 준비되셨나요? 😎</p>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button onclick="prevSlide()">◀ 이전</button>
+        <button onclick="nextSlide()">다음 ▶</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total-slides').textContent = totalSlides;
+        
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[n].classList.add('active');
+            document.getElementById('current-slide').textContent = n + 1;
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+        
+        // 키보드 내비게이션
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+        
+        // 터치 스와이프 지원
+        let startX = null;
+        
+        document.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].clientX;
+        });
+        
+        document.addEventListener('touchend', function(e) {
+            if (!startX) return;
+            
+            let endX = e.changedTouches[0].clientX;
+            let diff = startX - endX;
+            
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+            
+            startX = null;
+        });
+    </script>
+</body>
+</html>
