@@ -1,2 +1,2 @@
-# chooseonelie
-이 중 하나는 거짓말 게임 소개 페이지
+# choiceonelie
+이중 하나는 거짓말 게임 소개 페이지
